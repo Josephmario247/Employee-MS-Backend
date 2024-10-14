@@ -13,7 +13,10 @@ import connectToDatabase from './db/db.js';
 
 connectToDatabase()
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: ['https://employee-ms-frontend.vercel.app', 'http://localhost:5000'], // allow requests from both client and server
+    credentials: true  // enable cookies for authentication
+}))
 app.use(express.json())
 app.use(express.static('public/uploads')) // to access the static images in the serverside from the frontend
 
